@@ -1,23 +1,25 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function NotificationFilters({ filters, value, onChange }) {
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
       {filters.map((f) => {
         const active = f === value;
         return (
-          <button
+          <motion.button
             key={f}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => onChange(f)}
-            className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium ring-1 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
-              active
-                ? "bg-indigo-600 text-white ring-indigo-400 hover:bg-indigo-700"
-                : "bg-gradient-to-r from-indigo-50 to-purple-50 text-indigo-700 ring-indigo-200 hover:from-indigo-100 hover:to-purple-100"
-            }`}
+            className={`flex items-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-black shadow-sm transition-all border-2 ${active
+              ? "bg-gradient-to-br from-indigo-600 to-violet-600 text-white border-transparent shadow-md shadow-indigo-200/50"
+              : "bg-white text-slate-600 border-slate-200 hover:border-indigo-200 hover:bg-indigo-50/40"
+              }`}
           >
-            <span>{iconFor(f)}</span>
+            <span className="text-base">{iconFor(f)}</span>
             <span>{f}</span>
-          </button>
+          </motion.button>
         );
       })}
     </div>
@@ -34,7 +36,12 @@ function iconFor(key) {
       return "✈️";
     case "Safety":
       return "🛡️";
+    case "Trip":
+      return "🌍";
+    case "System":
+      return "⚙️";
     default:
       return "🔔";
   }
 }
+

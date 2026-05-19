@@ -1,0 +1,616 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good evening",
+        "Assalam o Alaikum",
+        "Salam",
+        "What's up",
+        "How are you",
+        "Kya haal hai"
+      ],
+      "responses": [
+        "Hello! I'm your travel guide. Where would you like to explore today?",
+        "Hi there! Ready to discover amazing destinations? Ask me about hotels, flights, or travel tips!",
+        "Hey! I can help you plan the perfect trip. Tell me your destination!",
+        "Assalam o Alaikum! I'm here to guide you through Pakistan and beyond. What are you planning?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you later",
+        "Thanks",
+        "Thank you",
+        "That's all",
+        "Allah Hafiz",
+        "Khuda Hafiz"
+      ],
+      "responses": [
+        "Goodbye! Have a wonderful journey and safe travels!",
+        "Allah Hafiz! May your trip be filled with amazing memories!",
+        "Thanks for chatting! Bon voyage and enjoy every moment!",
+        "Take care! Don't forget to check weather and pack accordingly!"
+      ]
+    },
+    {
+      "tag": "destinations_pakistan",
+      "patterns": [
+        "Best places in Pakistan",
+        "Where to visit in Pakistan",
+        "Pakistan tourist spots",
+        "Northern areas",
+        "Hunza",
+        "Skardu",
+        "Naran Kaghan",
+        "Swat",
+        "Murree",
+        "Lahore tourism",
+        "Karachi places",
+        "Islamabad attractions"
+      ],
+      "responses": [
+        "Pakistan has stunning destinations! Northern Areas: Hunza (cherry blossoms in spring), Skardu (Shangrila Resort, Deosai Plains), Naran-Kaghan (Lake Saif ul Malook), Swat (Switzerland of Pakistan). Cities: Lahore (Badshahi Mosque, Food Street), Karachi (Clifton Beach, Mohatta Palace), Islamabad (Faisal Mosque, Margalla Hills).",
+        "Top Pakistan destinations: 1) Hunza Valley - Best time: April-October, 2) Skardu - June-September for trekking, 3) Fairy Meadows - Base camp for Nanga Parbat, 4) Neelum Valley - Lush green paradise, 5) Chitral - Kalash valleys. Each offers unique experiences!",
+        "For adventure: Try Skardu (PKR 25,000-40,000 for 5 days), Hunza (PKR 30,000-50,000), or Naran (PKR 15,000-25,000). For culture: Lahore (PKR 10,000-20,000 for 3 days). All budgets include stay, food, and local transport."
+      ]
+    },
+    {
+      "tag": "destinations_international",
+      "patterns": [
+        "International destinations",
+        "Where to go abroad",
+        "Dubai trip",
+        "Turkey travel",
+        "Thailand tourism",
+        "Malaysia visit",
+        "Saudi Arabia umrah",
+        "Europe travel",
+        "Best countries to visit"
+      ],
+      "responses": [
+        "Popular international destinations from Pakistan: 1) Dubai, UAE - 3-4 days, PKR 80,000-120,000 (visa on arrival), 2) Istanbul, Turkey - 5-7 days, PKR 150,000-250,000 (e-visa), 3) Bangkok, Thailand - 5-6 days, PKR 100,000-180,000 (visa on arrival), 4) Kuala Lumpur, Malaysia - 4-5 days, PKR 90,000-150,000 (visa free).",
+        "Budget-friendly: Dubai (shopping, Burj Khalifa), Thailand (beaches, temples), Malaysia (Petronas Towers, food). Mid-range: Turkey (history, culture), Azerbaijan (Baku). Premium: Europe (Schengen visa needed), Maldives (honeymoon paradise).",
+        "For religious tourism: Saudi Arabia (Umrah packages PKR 150,000-300,000), UAE (mosques, halal food everywhere). Best booking time: 2-3 months advance for good deals!"
+      ]
+    },
+    {
+      "tag": "hotels_lahore",
+      "patterns": [
+        "Hotels in Lahore",
+        "Where to stay in Lahore",
+        "Lahore accommodation",
+        "Best hotels Lahore",
+        "Cheap hotels Lahore",
+        "Luxury hotels Lahore"
+      ],
+      "responses": [
+        "Lahore Hotels - Luxury: Pearl Continental (PKR 25,000/night), Avari (PKR 18,000/night), Hospitality Inn (PKR 12,000/night). Mid-range: Ramada (PKR 8,000/night), Hotel One (PKR 6,000/night). Budget: Sunfort (PKR 3,500/night), Metro Hotel (PKR 2,500/night). All near major attractions!",
+        "Best areas to stay in Lahore: Gulberg (shopping, restaurants), Mall Road (historical sites), DHA (modern, safe). Recommended: Hotel One Gulberg (PKR 6,500/night, breakfast included), or Luxus Grand (PKR 15,000/night, 5-star amenities).",
+        "Budget tip: Book hotels near Kalma Chowk or Johar Town for PKR 2,000-4,000/night with good facilities. For families: Avari Towers or PC Hotel offer spacious rooms and pools."
+      ]
+    },
+    {
+      "tag": "hotels_islamabad",
+      "patterns": [
+        "Hotels in Islamabad",
+        "Islamabad accommodation",
+        "Where to stay Islamabad",
+        "Best hotels Islamabad",
+        "Cheap stay Islamabad"
+      ],
+      "responses": [
+        "Islamabad Hotels - Premium: Serena Hotel (PKR 30,000/night), Marriott (PKR 22,000/night), Islamabad Hotel (PKR 18,000/night). Mid-range: Ramada Islamabad (PKR 10,000/night), Best Western (PKR 8,000/night). Budget: Envoy Continental (PKR 4,000/night), Hill View (PKR 3,000/night).",
+        "Best locations: F-6/F-7 (Blue Area - business district), F-10 (near Centaurus Mall), or Bahria Town (modern, family-friendly). Recommended: Roomy Signature (PKR 7,000/night) or Envoy Continental (PKR 4,500/night).",
+        "Near Faisal Mosque: Try hotels in E-7 or F-6 sectors. For nature lovers: Stay near Margalla Hills (Monal area) for scenic views and hiking access."
+      ]
+    },
+    {
+      "tag": "hotels_karachi",
+      "patterns": [
+        "Hotels in Karachi",
+        "Karachi accommodation",
+        "Where to stay Karachi",
+        "Beach hotels Karachi",
+        "Best hotels Karachi"
+      ],
+      "responses": [
+        "Karachi Hotels - Luxury: Pearl Continental (PKR 20,000/night), Movenpick (PKR 18,000/night), Avari Towers (PKR 16,000/night). Mid-range: Mehran Hotel (PKR 9,000/night), Ramada Creek (PKR 11,000/night). Budget: Regency Hotel (PKR 4,000/night), Dreamworld Resort (PKR 3,500/night).",
+        "Best areas: Clifton/DHA (beaches, restaurants), Saddar (city center, shopping), Gulshan-e-Iqbal (residential, safe). Near beach: Beach Luxury Hotel (PKR 12,000/night) or Hotel Metropole (PKR 8,000/night).",
+        "Budget stays: Try hotels in Gulshan or North Nazimabad (PKR 2,500-4,500/night). For business: Book in Clifton or DHA with easy airport access (30-40 mins)."
+      ]
+    },
+    {
+      "tag": "hotels_hunza",
+      "patterns": [
+        "Hotels in Hunza",
+        "Hunza accommodation",
+        "Where to stay Hunza",
+        "Hunza Valley hotels",
+        "Best hotels Hunza"
+      ],
+      "responses": [
+        "Hunza Hotels - Premium: Serena Hunza (PKR 15,000/night, mountain views), Hunza Embassy (PKR 8,000/night). Mid-range: Eagle's Nest (PKR 6,000/night), Rakaposhi View (PKR 5,000/night). Budget: Karimabad Inn (PKR 2,500/night), Mountain Story (PKR 3,000/night).",
+        "Best locations: Karimabad (central, near Baltit Fort), Altit (peaceful, heritage), Gulmit (upper Hunza, glaciers). Recommended: Hunza Serena for luxury or Eagle's Nest for budget comfort with amazing views!",
+        "Unique stays: Try local guesthouses (PKR 1,500-2,500/night) for authentic experience. Book 1-2 months advance for peak season (May-September). Most hotels include breakfast with local apricot jam!"
+      ]
+    },
+    {
+      "tag": "hotels_skardu",
+      "patterns": [
+        "Hotels in Skardu",
+        "Skardu accommodation",
+        "Where to stay Skardu",
+        "Shangrila Resort",
+        "Best hotels Skardu"
+      ],
+      "responses": [
+        "Skardu Hotels - Premium: Shangrila Resort (PKR 12,000/night, lakeside paradise), Mashabrum Hotel (PKR 10,000/night). Mid-range: Concordia Hotel (PKR 6,000/night), K2 Motel (PKR 5,000/night). Budget: PTDC Motel (PKR 3,000/night), Mountain Lodge (PKR 2,500/night).",
+        "Must-stay: Shangrila Resort (Lower Kachura Lake) - iconic heart-shaped lake, restaurant in aircraft! Book early. For trekkers: Stay near city center for easy access to Deosai, Shigar, and Khaplu.",
+        "Budget tip: Local guesthouses in Skardu city (PKR 1,500-2,500/night). Best time: June-September. Winter (Nov-March) many hotels close due to snow. Always confirm heating facilities!"
+      ]
+    },
+    {
+      "tag": "hotels_dubai",
+      "patterns": [
+        "Hotels in Dubai",
+        "Dubai accommodation",
+        "Where to stay Dubai",
+        "Cheap hotels Dubai",
+        "Luxury hotels Dubai"
+      ],
+      "responses": [
+        "Dubai Hotels - Ultra Luxury: Burj Al Arab (AED 5,000+/night), Atlantis The Palm (AED 2,000/night). Luxury: Jumeirah Beach Hotel (AED 1,200/night), Address Downtown (AED 900/night). Mid-range: Rove Hotels (AED 350/night), Ibis (AED 250/night). Budget: Premier Inn (AED 200/night).",
+        "Best areas: Downtown Dubai (Burj Khalifa, Dubai Mall), Dubai Marina (beach, nightlife), Deira (old Dubai, souks - budget friendly). Recommended: Rove Downtown (AED 350/night) - modern, central, great value!",
+        "Budget tip: Stay in Deira or Bur Dubai (AED 150-250/night) and use metro (very cheap!). Book 2-3 months advance. Avoid peak season (Nov-March) for better rates. Many hotels offer free airport shuttle!"
+      ]
+    },
+    {
+      "tag": "hotels_istanbul",
+      "patterns": [
+        "Hotels in Istanbul",
+        "Istanbul accommodation",
+        "Where to stay Istanbul",
+        "Turkey hotels",
+        "Best hotels Istanbul"
+      ],
+      "responses": [
+        "Istanbul Hotels - Luxury: Ciragan Palace (€400/night), Four Seasons Sultanahmet (€350/night). Mid-range: Sura Hagia Sophia (€120/night), Dosso Dossi (€80/night). Budget: Cheers Hostel (€25/night), Sultan Hostel (€30/night, breakfast included).",
+        "Best areas: Sultanahmet (Blue Mosque, Hagia Sophia - touristy), Beyoglu/Taksim (modern, nightlife), Besiktas (local vibe, Bosphorus views). Recommended: Stay in Sultanahmet for first-timers, easy walking to major sites!",
+        "Budget tip: Book hotels in Laleli or Aksaray (€40-70/night) with tram access. Turkish breakfast is amazing - always choose hotels with breakfast included! Book 1-2 months advance for best deals."
+      ]
+    },
+    {
+      "tag": "flights_domestic",
+      "patterns": [
+        "Flights in Pakistan",
+        "Domestic flights",
+        "Lahore to Karachi flight",
+        "Islamabad to Skardu",
+        "PIA flights",
+        "Airblue",
+        "Serene Air",
+        "Cheap flights Pakistan"
+      ],
+      "responses": [
+        "Domestic Flights Pakistan - Airlines: PIA, Airblue, Serene Air, AirSial. Routes: Lahore-Karachi (PKR 8,000-15,000, 2hrs), Islamabad-Karachi (PKR 9,000-16,000, 2.5hrs), Islamabad-Skardu (PKR 12,000-25,000, 1hr - scenic!), Lahore-Islamabad (PKR 6,000-12,000, 1hr).",
+        "Northern Areas: Islamabad-Gilgit (PKR 10,000-20,000), Islamabad-Skardu (weather dependent, book flexible). Tip: Book 3-4 weeks advance for 30-40% cheaper fares. Tuesday-Thursday flights are usually cheaper than weekends!",
+        "Budget airlines: Airblue and Serene Air often have sales. Download apps for deals. Skardu flights: Book early (limited seats) and have backup plan - flights cancel due to weather. Best months: May-September."
+      ]
+    },
+    {
+      "tag": "flights_international",
+      "patterns": [
+        "International flights",
+        "Flights to Dubai",
+        "Flights to Turkey",
+        "Cheap international flights",
+        "Emirates",
+        "Qatar Airways",
+        "PIA international",
+        "Flight booking"
+      ],
+      "responses": [
+        "International Flights from Pakistan - Dubai: Emirates (PKR 45,000-80,000), FlyDubai (PKR 30,000-55,000), PIA (PKR 35,000-60,000). Istanbul: Turkish Airlines (PKR 65,000-120,000), PIA (PKR 55,000-95,000). Bangkok: Thai Airways (PKR 55,000-90,000), PIA (PKR 50,000-85,000).",
+        "Budget routes: Dubai (cheapest, 2.5hrs), Sharjah (alternative to Dubai, cheaper), Muscat (PKR 35,000-60,000), Kuala Lumpur (PKR 60,000-100,000). Premium: Qatar Airways, Emirates (best service). Economy: AirBlue, Serene Air for Gulf routes.",
+        "Booking tips: Book 2-3 months advance for international (save 40-50%). Use Skyscanner, Google Flights to compare. Tuesday-Wednesday departures are cheaper. Avoid peak seasons: Eid, summer holidays, December. Connect via Dubai/Doha for Europe (cheaper than direct)."
+      ]
+    },
+    {
+      "tag": "transport_local",
+      "patterns": [
+        "Local transport",
+        "How to travel in city",
+        "Uber in Pakistan",
+        "Careem",
+        "Metro bus",
+        "Rickshaw",
+        "Local buses",
+        "Rent a car"
+      ],
+      "responses": [
+        "Pakistan Local Transport - Ride-hailing: Careem, Uber, InDriver (cheapest), Bykea (bikes). Lahore: Metro Bus (PKR 30-50), Orange Line Train (PKR 40). Islamabad: Metro Bus (PKR 20-50). Karachi: No metro yet, use Careem/Uber or local buses.",
+        "Budget options: Rickshaws (PKR 50-200 for short trips, negotiate!), Local buses (PKR 20-50), Daewoo/Faisal Movers for intercity (PKR 1,000-2,500). Comfortable: Rent a car (PKR 3,000-6,000/day with driver, PKR 2,000-4,000 self-drive).",
+        "Safety tip: Use Careem/Uber for safety and fixed prices. For Northern Areas, hire 4x4 jeeps (PKR 8,000-15,000/day). Always agree on price before starting journey in rickshaws/taxis!"
+      ]
+    },
+    {
+      "tag": "transport_intercity",
+      "patterns": [
+        "Lahore to Islamabad",
+        "Intercity travel",
+        "Daewoo bus",
+        "Faisal Movers",
+        "Motorway travel",
+        "Train Pakistan",
+        "How to travel between cities"
+      ],
+      "responses": [
+        "Intercity Transport Pakistan - Luxury Buses: Daewoo (PKR 1,500-2,500), Faisal Movers (PKR 1,200-2,000), Niazi Express (PKR 1,000-1,800). Routes: Lahore-Islamabad (4-5hrs), Lahore-Karachi (18-20hrs), Islamabad-Peshawar (3hrs). Very comfortable with AC, WiFi, snacks!",
+        "Trains: Pakistan Railways - Economy (PKR 800-1,500), AC Business (PKR 2,000-3,500), AC Sleeper (PKR 3,000-5,000). Popular: Green Line (Islamabad-Karachi, 18hrs), Tezgam (Rawalpindi-Karachi). Book via Pak Rail app. Trains are scenic but slower than buses.",
+        "Best option: For short trips (under 6hrs) - Daewoo/Faisal Movers buses (comfortable, on-time). For long trips - flights if budget allows, or AC sleeper trains for experience. Northern Areas - hire private cars/jeeps (safer on mountain roads)."
+      ]
+    },
+    {
+      "tag": "weather_pakistan",
+      "patterns": [
+        "Weather in Pakistan",
+        "Best time to visit",
+        "Pakistan weather",
+        "When to visit Hunza",
+        "Summer in Pakistan",
+        "Winter travel Pakistan",
+        "Monsoon season"
+      ],
+      "responses": [
+        "Pakistan Weather Guide - Northern Areas (Hunza, Skardu, Swat): Best time April-October (15-25°C). Peak season: May-September. Winter (Nov-March) heavy snow, roads close. Lahore/Islamabad: Pleasant Oct-March (10-25°C), Hot summer Apr-June (35-45°C), Monsoon July-Aug.",
+        "Karachi: Hot year-round (25-40°C), best Nov-Feb. Avoid June-Aug (humid, 40°C+). Murree/Nathia Gali: Snowfall Dec-Feb, pleasant May-Sep. Monsoon (July-Aug) brings rain to most areas - carry umbrella, roads may be slippery!",
+        "Best travel seasons: Spring (March-May) - flowers bloom in Hunza, pleasant everywhere. Autumn (Sep-Nov) - clear skies, perfect for photography. Avoid: Peak summer (June-July) in plains (too hot), Winter in mountains (roads blocked)."
+      ]
+    },
+    {
+      "tag": "weather_international",
+      "patterns": [
+        "Dubai weather",
+        "Turkey weather",
+        "Best time Dubai",
+        "Thailand weather",
+        "Malaysia climate",
+        "When to visit Dubai"
+      ],
+      "responses": [
+        "Dubai Weather - Best time: Nov-March (20-30°C, perfect!). Avoid: June-Aug (40-50°C, extremely hot). Peak tourist season: Dec-Jan (expensive). Shoulder season: Oct-Nov, Mar-Apr (good weather, better prices). Rain is rare, pack sunscreen!",
+        "Istanbul/Turkey - Best: April-May, Sep-Oct (15-25°C, less crowds). Summer (June-Aug) hot (30°C+) but beaches are great. Winter (Dec-Feb) cold (5-10°C), some snow. Bangkok/Thailand - Best: Nov-Feb (cool season, 25-30°C). Avoid: Mar-May (40°C+, very hot). Monsoon: June-Oct (rain but still warm).",
+        "Malaysia - Hot year-round (25-35°C). Best: Dec-Feb (less rain). Monsoon: Nov-Feb (East coast), May-Sep (West coast). Kuala Lumpur - can visit anytime, afternoon showers common. Always pack light clothes, sunscreen, and umbrella for tropical destinations!"
+      ]
+    },
+    {
+      "tag": "budget_pakistan",
+      "patterns": [
+        "Budget for Pakistan trip",
+        "How much money needed",
+        "Cost of trip Pakistan",
+        "Hunza trip budget",
+        "Lahore trip cost",
+        "Cheap travel Pakistan"
+      ],
+      "responses": [
+        "Pakistan Trip Budgets (per person) - Hunza 5 days: Budget PKR 25,000 (hostel, local food, shared transport), Mid-range PKR 40,000 (hotel, mixed dining, private car), Luxury PKR 70,000+ (Serena, fine dining, 4x4). Skardu 5 days: Budget PKR 30,000, Mid-range PKR 50,000, Luxury PKR 80,000+.",
+        "City trips - Lahore 3 days: Budget PKR 12,000 (PKR 2,500 hotel, PKR 1,500 food/day, PKR 1,000 transport), Mid-range PKR 25,000, Luxury PKR 50,000+. Islamabad 3 days: Budget PKR 15,000, Mid-range PKR 30,000. Add PKR 5,000-10,000 for shopping/souvenirs!",
+        "Budget breakdown: Accommodation (30-40%), Food (25-30%), Transport (20-25%), Activities (10-15%). Save money: Travel off-season, use public transport, eat at local restaurants (dhabas), book hotels in advance, travel in groups to share costs!"
+      ]
+    },
+    {
+      "tag": "budget_international",
+      "patterns": [
+        "Dubai trip budget",
+        "Turkey trip cost",
+        "International trip budget",
+        "How much for Dubai",
+        "Thailand trip cost",
+        "Cheap international travel"
+      ],
+      "responses": [
+        "International Trip Budgets (from Pakistan, per person) - Dubai 4 days: Budget PKR 80,000 (flight PKR 35,000, hotel PKR 25,000, food/transport PKR 20,000), Mid-range PKR 120,000, Luxury PKR 200,000+. Thailand 6 days: Budget PKR 100,000, Mid-range PKR 160,000, Luxury PKR 280,000+.",
+        "Turkey 7 days: Budget PKR 150,000 (flight PKR 70,000, accommodation PKR 40,000, food/activities PKR 40,000), Mid-range PKR 250,000, Luxury PKR 400,000+. Malaysia 5 days: Budget PKR 90,000, Mid-range PKR 150,000. Umrah: PKR 150,000-300,000 (varies by season, hotel distance from Haram).",
+        "Save money internationally: Book flights 2-3 months early, stay in budget hotels/hostels, use public transport (Dubai Metro is cheap!), eat local food (avoid touristy restaurants), book tours online (cheaper than on-spot), travel off-season for 30-40% savings!"
+      ]
+    },
+    {
+      "tag": "food_pakistan",
+      "patterns": [
+        "Best food in Pakistan",
+        "What to eat in Lahore",
+        "Pakistani cuisine",
+        "Food Street Lahore",
+        "Karachi food",
+        "Local food",
+        "Must try dishes"
+      ],
+      "responses": [
+        "Pakistan Must-Try Foods - Lahore: Nihari (Waris Nihari), Haleem (Phajja's), Chargha (Butt Karahi), Food Street (Fort Road - Kunna Gosht, BBQ). Karachi: Biryani (Student Biryani, Kolachi), Bun Kabab (Zameer Ansari), Sajji (Balochi). Islamabad: Monal Restaurant (view + desi food), Savour Foods (pulao, tikka).",
+        "Street Food: Gol Gappay (PKR 50-100), Samosas (PKR 20-50), Chaat (PKR 80-150), Dahi Bhalla (PKR 100-200). Sweets: Jalebi, Gulab Jamun, Ras Malai. Northern Areas: Chapshuro (Hunza), Harissa (Skardu), Local apricots and walnuts. Average meal cost: PKR 300-800 per person.",
+        "Budget eating: Local dhabas (PKR 200-400/meal), Food streets (PKR 500-1,000), Mid-range restaurants (PKR 800-1,500), Fine dining (PKR 2,000-5,000). Tip: Try local dhabas for authentic taste at 1/3rd price of fancy restaurants!"
+      ]
+    },
+    {
+      "tag": "food_international",
+      "patterns": [
+        "Food in Dubai",
+        "What to eat in Turkey",
+        "Halal food abroad",
+        "Best restaurants Dubai",
+        "Turkish cuisine",
+        "Thailand halal food"
+      ],
+      "responses": [
+        "Dubai Food - Must try: Shawarma (AED 10-20), Al Harees (traditional), Kunafa (dessert). Budget: Al Mallah (shawarma, AED 50/meal), Ravi Restaurant (Pakistani/Indian, AED 30-50). Mid-range: Bu Qtair (seafood, AED 80), Zaroob (street food, AED 60-100). Luxury: Atmosphere (Burj Khalifa, AED 500+). All halal!",
+        "Turkey Food - Must try: Kebabs (Adana, Iskender), Baklava, Turkish Delight, Pide (Turkish pizza), Lahmacun. Budget: Local lokantas (₺100-200/meal), Street food (simit, doner). Mid-range: Sultanahmet restaurants (₺300-500). All meat is halal in Turkey! Don't miss Turkish tea and coffee!",
+        "Thailand Halal - Bangkok: Muslim Quarter (Halal street food), After You (desserts), Halal restaurants in Arab Street. Malaysia: 100% halal everywhere! Try Nasi Lemak, Satay, Roti Canai. Tip: Download HalalTrip or Zabihah app to find halal restaurants anywhere!"
+      ]
+    },
+    {
+      "tag": "activities_adventure",
+      "patterns": [
+        "Adventure activities",
+        "Trekking in Pakistan",
+        "Hiking",
+        "Paragliding",
+        "Camping",
+        "Mountain climbing",
+        "Adventure sports"
+      ],
+      "responses": [
+        "Adventure Activities Pakistan - Trekking: K2 Base Camp (Skardu, 12-14 days, expert level), Fairy Meadows (Nanga Parbat view, 2-3 days, moderate), Rush Lake (Nagar, highest alpine lake, 3-4 days). Paragliding: Bir Billing style in Hunza (PKR 5,000-8,000).",
+        "Camping: Deosai Plains (Skardu, July-Sep, PKR 3,000-5,000/night with guide), Rama Meadows (Astore), Ratti Gali Lake (Neelum). Rafting: Kunhar River (Naran), Indus River (Skardu). Jeep Safari: Skardu to Khaplu, Hunza to Khunjerab Pass (China border, 4,693m altitude!).",
+        "Rock Climbing: Passu Cones (Hunza), Baltit Fort area. Zip-lining: Dolai (Hunza, PKR 2,000). Skiing: Malam Jabba (Swat, Dec-Feb, PKR 3,000-5,000/day). Always hire local guides for safety (PKR 2,000-5,000/day). Best season: May-September for most activities."
+      ]
+    },
+    {
+      "tag": "activities_cultural",
+      "patterns": [
+        "Cultural activities",
+        "Historical places",
+        "Museums",
+        "Forts",
+        "Mosques",
+        "Heritage sites",
+        "What to see"
+      ],
+      "responses": [
+        "Cultural Sites Pakistan - Lahore: Badshahi Mosque (free), Lahore Fort (PKR 500), Shalimar Gardens (PKR 50), Wazir Khan Mosque, Anarkali Bazaar. Islamabad: Faisal Mosque (free, stunning!), Lok Virsa Museum (PKR 50), Pakistan Monument. Karachi: Quaid's Mausoleum (free), Mohatta Palace (PKR 100), Clifton Beach.",
+        "Northern Heritage: Baltit Fort (Hunza, PKR 200, 700 years old), Altit Fort (PKR 150), Shigar Fort (now a museum hotel!), Skardu Kharpocho Fort. Taxila: Ancient Buddhist ruins (UNESCO site, PKR 500). Mohenjo-Daro: Indus Valley Civilization (Sindh, PKR 500).",
+        "Religious sites: Badshahi Mosque (Lahore, 2nd largest in Pakistan), Faisal Mosque (Islamabad, largest in South Asia), Shah Faisal Mosque (Karachi), Data Darbar (Lahore). Most mosques are free entry, dress modestly. Best time: Early morning or before sunset for photography!"
+      ]
+    },
+    {
+      "tag": "activities_family",
+      "patterns": [
+        "Family activities",
+        "Things to do with kids",
+        "Family friendly places",
+        "Parks",
+        "Amusement parks",
+        "Zoo",
+        "Family trip"
+      ],
+      "responses": [
+        "Family Activities Pakistan - Lahore: Jilani Park (PKR 50), Lahore Zoo (PKR 50), Joyland (PKR 100-500 rides), Safari Zoo (PKR 500), Sozo Water Park (PKR 1,500-2,500). Islamabad: Lake View Park (PKR 50), Fatima Jinnah Park (F-9 Park, free), Pir Sohawa (Monal, chairlift PKR 300).",
+        "Karachi: Karachi Zoo (PKR 50), Funland (Clifton, PKR 100-300), Sindbad (amusement park, PKR 1,500-2,500), Sea View Beach (free, camel rides PKR 200-500). Murree: Mall Road, chairlift (PKR 400), Patriata (New Murree, cable car PKR 1,000).",
+        "Northern Areas (family-friendly): Naran (Lake Saif ul Malook boat ride PKR 500-1,000), Shogran (meadows, horse riding PKR 500-1,000), Ayubia (chairlift PKR 600, pipeline track walk). Most parks have food stalls and prayer areas. Best for families: March-October."
+      ]
+    },
+    {
+      "tag": "shopping",
+      "patterns": [
+        "Shopping in Pakistan",
+        "What to buy",
+        "Souvenirs",
+        "Markets",
+        "Bazaars",
+        "Shopping malls",
+        "Handicrafts"
+      ],
+      "responses": [
+        "Shopping Pakistan - Lahore: Anarkali Bazaar (clothes, jewelry), Liberty Market (fabrics, shoes), Packages Mall (modern brands). Islamabad: Jinnah Super (local items), Centaurus Mall (brands), F-6 Markaz. Karachi: Saddar (electronics, clothes), Dolmen Mall (luxury), Zamzama (boutiques).",
+        "Souvenirs: Hunza - Gemstones (ruby, emerald, PKR 500-50,000), dry fruits (apricots, walnuts, PKR 500-2,000/kg), handmade carpets (PKR 5,000-100,000). Swat - Emeralds, shawls. Lahore - Truck art items, miniature paintings, leather goods. Karachi - Ajrak, Sindhi caps.",
+        "Handicrafts: Hunza/Gilgit - Woolen shawls (PKR 2,000-10,000), gemstone jewelry (PKR 1,000-50,000). Lahore - Blue pottery, camel skin lamps (PKR 500-5,000). Swat - Peshawari chappals (PKR 1,500-4,000). Bargain at bazaars (start at 50-60% of asking price!). Malls have fixed prices."
+      ]
+    },
+    {
+      "tag": "safety_tips",
+      "patterns": [
+        "Is Pakistan safe",
+        "Safety tips",
+        "Travel safety",
+        "Emergency numbers",
+        "Safe areas",
+        "Security",
+        "Solo travel safe"
+      ],
+      "responses": [
+        "Pakistan Safety - Generally safe for tourists! Major cities (Lahore, Islamabad, Karachi) and Northern Areas (Hunza, Skardu, Swat) are very safe. Emergency numbers: Police 15, Ambulance 115, Tourist Police 1422. Download Pak Travel app for tourist helpline.",
+        "Safety Tips: 1) Dress modestly (especially women), 2) Use registered transport (Careem/Uber), 3) Keep copies of passport/visa, 4) Avoid political gatherings, 5) Don't display expensive items, 6) Inform hotel about daily plans, 7) Travel in groups in unfamiliar areas, 8) Respect local customs and prayer times.",
+        "Solo travel: Women can travel solo but better with groups in Northern Areas. Locals are very hospitable and helpful! Register with your embassy. Use tourist police helpline for any issues. Northern Areas are safer than cities. Avoid traveling at night on highways. Always have local SIM card (Jazz/Zong) for emergencies."
+      ]
+    },
+    {
+      "tag": "visa_documents",
+      "patterns": [
+        "Visa requirements",
+        "Documents needed",
+        "Passport",
+        "Visa for Dubai",
+        "Visa for Turkey",
+        "Travel documents",
+        "How to get visa"
+      ],
+      "responses": [
+        "Visa Requirements from Pakistan - Dubai/UAE: Visa on arrival (PKR 10,000-15,000, 30 days) or online e-visa. Turkey: E-visa online (PKR 8,000-12,000, 90 days). Thailand: Visa on arrival (PKR 5,000-8,000, 15 days). Malaysia: Visa-free (30 days). Saudi Arabia: Umrah visa through approved agents.",
+        "Documents needed: Valid passport (6 months validity), return flight ticket, hotel booking, bank statement (PKR 200,000+ for most countries), travel insurance (recommended), passport photos (2-4). For e-visa: Apply 1-2 weeks before travel. Keep printed copies of all documents!",
+        "Pakistan visa (for foreigners): E-visa available for 175+ countries! Apply online at visa.nadra.gov.pk. Tourist visa: 30-90 days. Required: Passport, photo, hotel booking, travel itinerary. Processing: 5-7 days. Fee: $60-200 depending on nationality. Northern Areas: No special permit needed now (updated 2024)!"
+      ]
+    },
+    {
+      "tag": "packing_tips",
+      "patterns": [
+        "What to pack",
+        "Packing list",
+        "What to bring",
+        "Clothes for trip",
+        "Travel essentials",
+        "Packing for Hunza",
+        "What to wear"
+      ],
+      "responses": [
+        "Packing for Pakistan - Northern Areas: Layers (mornings cold, afternoons warm), windproof jacket, comfortable hiking shoes, sunscreen (SPF 50+), sunglasses, hat, power bank, first-aid kit, water bottle. Winter (Nov-March): Heavy jacket, thermals, gloves. Summer (May-Sep): Light clothes but carry jacket for evenings.",
+        "Cities (Lahore/Karachi/Islamabad): Light cotton clothes (summer), modest clothing (cover shoulders/knees), comfortable walking shoes, umbrella (monsoon season), sunscreen, adapter (UK-style 3-pin plugs), local SIM card (Jazz/Zong, PKR 300-500 with data).",
+        "International trips - Dubai: Light summer clothes, modest beachwear, sunscreen, adapter (UK-style). Turkey: Layers (spring/fall), scarf for mosques, comfortable shoes (lots of walking!). Thailand: Light clothes, mosquito repellent, rain jacket (monsoon). Always pack: Medicines, copies of documents, small lock for bags, reusable water bottle!"
+      ]
+    },
+    {
+      "tag": "photography",
+      "patterns": [
+        "Best photo spots",
+        "Photography locations",
+        "Instagram spots",
+        "Where to take photos",
+        "Scenic views",
+        "Photo points"
+      ],
+      "responses": [
+        "Best Photography Spots Pakistan - Hunza: Attabad Lake (turquoise water), Eagle's Nest viewpoint (sunrise!), Passu Cones, Baltit Fort, Khunjerab Pass. Skardu: Shangrila Lake, Shigar Fort, Deosai Plains (sunset), Katpana Desert, Upper Kachura Lake. Naran: Lake Saif ul Malook (reflection shots), Lalazar, Babusar Top.",
+        "Cities - Lahore: Badshahi Mosque (sunset from fort), Wazir Khan Mosque (tiles!), Food Street (night), Shalimar Gardens. Islamabad: Faisal Mosque (blue hour), Monal (city lights), Daman-e-Koh, Shah Faisal Mosque. Karachi: Mohatta Palace, Clifton Beach (sunset), Port Grand.",
+        "Photography tips: Golden hour (sunrise/sunset) for best light, Northern Areas best in spring (April-May, flowers) or autumn (Sep-Oct, clear skies). Drone rules: Need permission from CAA for commercial use. Ask permission before photographing people (especially women). Best camera: Phone is enough, but DSLR/mirrorless for pro shots!"
+      ]
+    },
+    {
+      "tag": "sim_internet",
+      "patterns": [
+        "SIM card Pakistan",
+        "Internet in Pakistan",
+        "Mobile data",
+        "WiFi",
+        "How to get SIM",
+        "Best network",
+        "Data packages"
+      ],
+      "responses": [
+        "Pakistan SIM Cards - Best networks: Jazz (best coverage), Zong (fast 4G), Telenor, Ufone. Tourist SIM: Available at airports (PKR 500-1,000 with data). Required: Passport copy, photo. Activation: Immediate. Data packages: 10GB (PKR 500-700/month), 50GB (PKR 1,500-2,000/month), Unlimited (PKR 2,500-3,500/month).",
+        "Internet: 4G available in all major cities and most Northern Areas (Hunza, Skardu have good coverage). WiFi: Available in hotels, restaurants, malls (usually free). Speed: 10-50 Mbps in cities, 5-20 Mbps in Northern Areas. Some remote areas (Fairy Meadows, high passes) have no signal.",
+        "Activation: Buy SIM from official franchise (Jazz/Zong shops) or airport. Biometric verification required (fingerprint scan). Takes 5-10 minutes. Top-up: Easy cards available everywhere (PKR 100-1,000). Apps: Jazz World, Zong App for balance check and packages. International roaming: Expensive, better to buy local SIM!"
+      ]
+    },
+    {
+      "tag": "language_culture",
+      "patterns": [
+        "Language in Pakistan",
+        "Do they speak English",
+        "Urdu phrases",
+        "Local language",
+        "Culture tips",
+        "Pakistani culture",
+        "Customs"
+      ],
+      "responses": [
+        "Languages Pakistan - National: Urdu (understood everywhere). English: Widely spoken in cities, hotels, tourist areas. Regional: Punjabi (Lahore), Sindhi (Karachi), Pashto (Peshawar), Balochi (Quetta). Northern Areas: Shina, Balti, Wakhi, Burushaski. Most educated people speak English, especially in tourism industry.",
+        "Useful Urdu Phrases: Assalam o Alaikum (Hello), Shukriya (Thank you), Kitna hai? (How much?), Mehenga hai (Too expensive), Kahan hai? (Where is?), Pani (Water), Khana (Food), Hotel (Hotel), Madad (Help), Theek hai (Okay). Learning basic Urdu helps, but English works fine!",
+        "Culture Tips: 1) Greet with 'Assalam o Alaikum', 2) Remove shoes before entering homes/mosques, 3) Use right hand for eating/giving, 4) Dress modestly (cover shoulders/knees), 5) Ask before photographing people, 6) Respect prayer times (5 times daily), 7) Ramadan: Don't eat/drink in public during fasting hours. Pakistanis are very hospitable - expect tea invitations!"
+      ]
+    },
+    {
+      "tag": "money_currency",
+      "patterns": [
+        "Currency in Pakistan",
+        "Money exchange",
+        "ATM",
+        "Credit card",
+        "How much cash",
+        "Pakistani Rupee",
+        "Exchange rate"
+      ],
+      "responses": [
+        "Pakistan Currency - Pakistani Rupee (PKR). Exchange rate (approx): 1 USD = PKR 280-290, 1 AED = PKR 75-80, 1 EUR = PKR 300-310. Exchange: At airports (slightly expensive), banks (best rates), authorized money changers. Bring USD, EUR, GBP, or AED for easy exchange.",
+        "ATMs: Widely available in cities (HBL, UBL, MCB, Meezan). International cards accepted (Visa, Mastercard). Withdrawal limit: PKR 25,000-50,000/transaction. Fee: PKR 200-500 + your bank's fee. Northern Areas: Limited ATMs (Gilgit, Skardu main cities), carry cash! Credit cards: Accepted in hotels, malls, restaurants in cities. Not in small shops/Northern Areas.",
+        "Cash tips: Carry mix of notes (PKR 100, 500, 1000). Small notes useful for rickshaws, street food. How much cash: PKR 10,000-20,000/day for budget travel, PKR 30,000-50,000 for comfortable. Keep emergency cash separate. Mobile banking: JazzCash, EasyPaisa widely used (can pay bills, transfer money). Download app for convenience!"
+      ]
+    },
+    {
+      "tag": "health_medical",
+      "patterns": [
+        "Medical facilities",
+        "Hospitals",
+        "Pharmacy",
+        "Health tips",
+        "Vaccination",
+        "Medicine",
+        "Doctor"
+      ],
+      "responses": [
+        "Medical Facilities Pakistan - Major cities: Excellent hospitals (Shaukat Khanum, Aga Khan, Shifa International). English-speaking doctors available. Pharmacies: Everywhere, many 24/7. Most medicines available without prescription (but bring your regular medicines!). Cost: Very affordable compared to West.",
+        "Health Tips: 1) Drink bottled water only (Nestle, Kinley - PKR 50-100/bottle), 2) Avoid street food first 2-3 days (let stomach adjust), 3) Carry hand sanitizer, 4) Altitude sickness: Common above 3,000m (Hunza, Skardu) - drink lots of water, rest first day, 5) Sun protection: SPF 50+ sunscreen, sunglasses.",
+        "Vaccinations: Routine vaccines up to date. Recommended: Hepatitis A, Typhoid. Not required but good: Hepatitis B, Rabies (if trekking). Travel insurance: Highly recommended! Covers medical emergencies, evacuation from remote areas. Emergency: Dial 115 for ambulance. Tourist areas have basic medical facilities, cities have excellent hospitals."
+      ]
+    },
+    {
+      "tag": "booking_help",
+      "patterns": [
+        "How to book",
+        "Booking hotels",
+        "Booking flights",
+        "Reservation",
+        "Book online",
+        "Travel agents",
+        "Tour packages"
+      ],
+      "responses": [
+        "Booking Platforms - Hotels: Booking.com, Agoda, Hotels.com (international), Jovago.pk (Pakistan). Flights: Skyscanner, Google Flights (compare), airline websites (direct booking). Packages: Bookme.pk, Sastaticket.pk (Pakistan), TripAdvisor (reviews). Always compare prices across platforms!",
+        "Tour Operators Pakistan: Adventure Tours Pakistan (trekking), Karakoram Tours (Northern Areas), Hunza Guides (local), Skardu Expeditions. Packages include: Transport, accommodation, guide, some meals. Cost: PKR 30,000-80,000 for 5-7 day Northern Areas tour. Book 1-2 months advance for peak season (May-Sep).",
+        "Booking Tips: 1) Book flights 2-3 months advance (save 40-50%), 2) Hotels: Book 2-4 weeks advance (better rates), 3) Read reviews on TripAdvisor/Google, 4) Check cancellation policy, 5) Pay with credit card (protection), 6) Confirm booking 2-3 days before arrival, 7) Keep confirmation emails/messages. For Northern Areas: Book through local tour operators for best experience!"
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "Help",
+        "I need help",
+        "Can you help me",
+        "Support",
+        "Assistance",
+        "How does this work",
+        "Guide me"
+      ],
+      "responses": [
+        "I'm your complete travel guide! I can help you with: 🏨 Hotels (Lahore, Islamabad, Karachi, Hunza, Skardu, Dubai, Turkey), ✈️ Flights (domestic & international), 🚗 Transport (local & intercity), ☀️ Weather (best time to visit), 💰 Budget planning, 🍽️ Food recommendations, 🎯 Activities & attractions, 📸 Photography spots, 📱 SIM cards & internet, 💊 Health & safety tips, 📋 Visa & documents, 🎒 Packing tips, 🛍️ Shopping & souvenirs. Just ask me anything!",
+        "Popular questions I can answer: 'Best hotels in Hunza?', 'How much for Dubai trip?', 'Weather in Skardu?', 'Cheap flights to Karachi?', 'What to eat in Lahore?', 'Is Pakistan safe?', 'Best time to visit Northern Areas?', 'How to get SIM card?', 'What to pack for Hunza?'. Try asking me about any destination or travel topic!",
+        "Need specific help? Ask me: Destinations (Pakistan or international), Hotels (any city), Flights (routes & prices), Transport (how to travel), Budget (cost estimates), Food (what & where to eat), Activities (adventure, cultural, family), Shopping (souvenirs, markets), Practical info (visa, SIM, money, health). I have detailed, real information to help plan your perfect trip!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thank you",
+        "Thanks a lot",
+        "That's helpful",
+        "Great",
+        "Awesome",
+        "Perfect",
+        "Shukriya",
+        "Appreciated"
+      ],
+      "responses": [
+        "You're welcome! Happy to help plan your trip. Need anything else?",
+        "Glad I could help! Feel free to ask more questions about your travel plans!",
+        "My pleasure! Safe travels and enjoy your journey! 🌍✈️",
+        "Shukriya! Don't hesitate to ask if you need more travel tips or information!"
+      ]
+    }
+  ]
+}

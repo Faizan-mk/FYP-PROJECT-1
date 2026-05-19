@@ -9,6 +9,19 @@ const sequelize = new Sequelize(
         host: process.env.DB_HOST,
         dialect: 'mysql',
         logging: false,
+        pool: {
+            max: 20,
+            min: 2,
+            acquire: 30000,
+            idle: 10000,
+            evict: 5000,
+        },
+        dialectOptions: {
+            connectTimeout: 10000,
+        },
+        retry: {
+            max: 5,         // retry failed queries up to 5 times
+        },
     }
 );
 

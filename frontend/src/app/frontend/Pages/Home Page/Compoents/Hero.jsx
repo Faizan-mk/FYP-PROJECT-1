@@ -1,90 +1,111 @@
 import { useEffect, useState } from 'react';
-import img1 from '../../../pictures/img1.jpg';
+import { useNavigate } from 'react-router-dom';
 import img2 from '../../../pictures/img 2.jpg';
 import img3 from '../../../pictures/img 3.jpg';
 import img4 from '../../../pictures/img 4.jpg';
 import img5 from '../../../pictures/img 5.jpg';
+import img6 from '../../../pictures/hotal 2.jpg';
+
+const HERO_IMAGES = [img2, img3, img4, img5, img6];
+
+const STATS = [
+  { value: '12+', label: 'Travel modules' },
+  { value: 'PKR', label: 'Local pricing' },
+  { value: 'AI', label: 'Trip assistant' },
+  { value: '24/7', label: 'Safety & weather' },
+];
 
 const Hero = () => {
-  const images = [img1, img2, img3, img4, img5];
   const [index, setIndex] = useState(0);
+  const [failed, setFailed] = useState(() => new Set());
+  const navigate = useNavigate();
 
   useEffect(() => {
     const id = setInterval(() => {
-      setIndex((i) => (i + 1) % images.length);
-    }, 4000);
+      setIndex((i) => (i + 1) % HERO_IMAGES.length);
+    }, 4500);
     return () => clearInterval(id);
-  }, [images.length]);
+  }, []);
+
+  const markFailed = (i) => {
+    setFailed((prev) => new Set(prev).add(i));
+  };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0 rounded-xl md:rounded-2xl overflow-hidden">
-        {images.map((src, i) => (
-          <img
+    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-slate-900">
+      <div className="absolute inset-0 z-0">
+        {HERO_IMAGES.map((src, i) => (
+          <div
             key={i}
-            src={src}
-            alt={`Hero background ${i + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-5000 ease-in-out ${i === index ? 'opacity-100' : 'opacity-0'}`}
-          />
+            className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${
+              i === index ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            {!failed.has(i) ? (
+              <img
+                src={src}
+                alt={`Pakistan travel ${i + 1}`}
+                className="w-full h-full object-cover"
+                onError={() => markFailed(i)}
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-slate-800 via-indigo-900 to-emerald-900" />
+            )}
+          </div>
         ))}
-        {/* Uniform dark scrim for overall contrast */}
-        <div className="absolute inset-0 bg-black/30"></div>
-        {/* Bottom-to-top gradient to boost legibility near content */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-slate-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-slate-900/20" />
       </div>
 
-      {/* Animated Plane */}
-      <div className="absolute top-20 left-0 w-16 h-16 opacity-80 animate-fly">
-        <svg viewBox="0 0 24 24" fill="white" className="w-full h-full">
-          <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      <div className="absolute top-24 left-0 w-14 h-14 opacity-70 animate-hero-fly pointer-events-none z-[1]">
+        <svg viewBox="0 0 24 24" fill="white" className="w-full h-full drop-shadow-lg">
+          <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
         </svg>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 md:px-8 max-w-4xl mx-auto bg-black/20 md:bg-transparent backdrop-blur-[2px] md:backdrop-blur-0 rounded-xl md:rounded-none py-6 md:py-0">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-          Plan Your Next Adventure with AI
-        </h1>
-        <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-3xl mx-auto drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
-          Smart, fast, and personalized travel planning — powered by Artificial Intelligence.
+      <div className="relative z-10 text-center text-white px-4 md:px-8 max-w-5xl mx-auto py-16">
+        <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-emerald-300 bg-emerald-500/15 border border-emerald-400/30 px-4 py-1.5 rounded-full mb-6">
+          <span>🇵🇰</span> Smart travel for Pakistan
         </p>
-        <button
-          className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-600/20"
-          onClick={() => {
-            const authed = typeof window !== 'undefined' && localStorage.getItem('authToken');
-            if (authed) window.location.href = '/dashboard';
-            else window.location.href = '/login';
-          }}
-        >
-          Start Your Trip
-        </button>
-      </div>
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-lg">
+          Plan your Pakistan trip with AI
+        </h1>
+        <p className="text-lg md:text-2xl mb-10 text-slate-100 max-w-3xl mx-auto leading-relaxed drop-shadow">
+          Flights, hotels, transport, budgets, weather, safety alerts, and an AI chatbot — one
+          platform built for domestic and northern-area travel in PKR.
+        </p>
 
-      {/* Custom CSS for plane animation */}
-      <style jsx>{`
-        @keyframes fly {
-          0% {
-            transform: translateX(-100px) translateY(0px);
-          }
-          25% {
-            transform: translateX(25vw) translateY(-20px);
-          }
-          50% {
-            transform: translateX(50vw) translateY(10px);
-          }
-          75% {
-            transform: translateX(75vw) translateY(-15px);
-          }
-          100% {
-            transform: translateX(100vw) translateY(0px);
-          }
-        }
-        
-        .animate-fly {
-          animation: fly 8s linear infinite;
-        }
-      `}</style>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+          <button
+            type="button"
+            onClick={() => navigate('/login')}
+            className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
+          >
+            Start planning
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="w-full sm:w-auto bg-white/10 backdrop-blur border border-white/30 text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/20 transition-all duration-300"
+          >
+            See all features
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          {STATS.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl bg-white/10 backdrop-blur border border-white/15 px-4 py-3"
+            >
+              <p className="text-2xl md:text-3xl font-bold">{stat.value}</p>
+              <p className="text-xs md:text-sm text-slate-200 mt-0.5">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

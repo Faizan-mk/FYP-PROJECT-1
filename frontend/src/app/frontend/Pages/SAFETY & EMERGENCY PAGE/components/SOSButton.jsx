@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function SOSButton() {
+export default function SOSButton({ safetyData }) {
+  const defaultEmergencyNumber = safetyData?.police || "911";
+
   const callNumber = (num) => {
     try {
       window.location.href = `tel:${num}`;
@@ -23,15 +25,15 @@ export default function SOSButton() {
           } catch {
             // ignore map errors, still attempt call
           }
-          callNumber("112");
+          callNumber(defaultEmergencyNumber);
         },
         () => {
-          callNumber("112");
+          callNumber(defaultEmergencyNumber);
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
       );
     } else {
-      callNumber("112");
+      callNumber(defaultEmergencyNumber);
     }
   };
 
@@ -50,8 +52,8 @@ export default function SOSButton() {
           </button>
         </div>
       </div>
-      <p className="mt-3 text-center text-sm text-gray-600">
-        Default emergency: <span className="font-semibold text-red-700">112</span>. Use the list to dial specific services.
+      <p className="mt-3 text-center text-sm text-gray-600 font-bold uppercase tracking-tight">
+        Primary Emergency: <span className="font-black text-red-600">{defaultEmergencyNumber}</span>
       </p>
     </div>
   );

@@ -1,88 +1,125 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WeatherSearchBar from './Components/WeatherSearchBar';
 import WeatherCard from './Components/WeatherCard';
 import ForecastSlider from './Components/ForecastSlider';
 import AISuggestion from './Components/AISuggestion';
-import RefreshButton from './Components/RefreshButton';
 import BackToDashboardButton from '../../components/BackToDashboardButton';
-
-const mockWeather = {
-  temp: 22,
-  condition: 'Rain',
-  icon: 'https://cdn.weatherapi.com/weather/64x64/day/296.png',
-  humidity: 80,
-  wind: 15,
-};
-
-const mockForecast = [
-  { day: 'Mon', temp: 21, icon: 'https://cdn.weatherapi.com/weather/64x64/day/296.png', condition: 'Rain' },
-  { day: 'Tue', temp: 23, icon: 'https://cdn.weatherapi.com/weather/64x64/day/113.png', condition: 'Sunny' },
-  { day: 'Wed', temp: 19, icon: 'https://cdn.weatherapi.com/weather/64x64/day/122.png', condition: 'Cloudy' },
-  { day: 'Thu', temp: 20, icon: 'https://cdn.weatherapi.com/weather/64x64/day/302.png', condition: 'Showers' },
-  { day: 'Fri', temp: 22, icon: 'https://cdn.weatherapi.com/weather/64x64/day/176.png', condition: 'Partly cloudy' },
-  { day: 'Sat', temp: 18, icon: 'https://cdn.weatherapi.com/weather/64x64/day/308.png', condition: 'Heavy rain' },
-  { day: 'Sun', temp: 24, icon: 'https://cdn.weatherapi.com/weather/64x64/day/113.png', condition: 'Sunny' },
-];
+import api from '../../src/config/api';
 
 const WeatherPage = () => {
-  const [weather, setWeather] = useState(mockWeather);
-  const [forecast, setForecast] = useState(mockForecast);
-  const [suggestion, setSuggestion] = useState('Rain expected — pack umbrella ☔');
+  const [weatherData, setWeatherData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentCity, setCurrentCity] = useState('');
   const navigate = useNavigate();
 
-  const handleSearch = (city) => {
-    // TODO: Fetch weather for city
-    setSuggestion('Rain expected — pack umbrella ☔');
+  const fetchWeather = async (city) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await api.get(`/weather/${city}`);
+      setWeatherData(response.data);
+      setCurrentCity(city);
+    } catch (err) {
+      console.error('Error fetching weather:', err);
+      setError('City not found. Please try a major city name.');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleRefresh = () => {
-    // TODO: Refresh weather
-    setSuggestion('Rain expected — pack umbrella ☔');
-  };
+  useEffect(() => {
+    const savedDestinations = JSON.parse(localStorage.getItem('selectedDestinations') || '[]');
+    const defaultCity = savedDestinations[0]?.name || 'Islamabad';
+    fetchWeather(defaultCity);
+  }, []);
+
+  // Auto-refresh weather data every 10 seconds
+  useEffect(() => {
+    if (!currentCity) return;
+
+    const intervalId = setInterval(() => {
+      console.log('Auto-refreshing weather data...');
+      // Fetch without showing loading state for smoother UX
+      api.get(`/weather/${currentCity}`)
+        .then(response => {
+          setWeatherData(response.data);
+          setError(null);
+        })
+        .catch(err => {
+          console.error('Error auto-refreshing weather:', err);
+        });
+    }, 10000); // 10 seconds
+
+    // Cleanup interval on unmount or when city changes
+    return () => clearInterval(intervalId);
+  }, [currentCity]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+    <div className="min-h-screen bg-slate-50 py-10 px-4 md:px-10">
+      <div className="max-w-5xl mx-auto">
+        {/* Simple Header */}
+        <div className="mb-10">
           <BackToDashboardButton />
-          <div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 bg-clip-text text-transparent">Weather Overview</span>
-            </h1>
-            <p className="mt-1 text-sm text-gray-600">Get up-to-date weather for your trip.</p>
-          </div>
+          <h1 className="text-4xl font-black text-slate-900 mt-4 tracking-tight">Weather Forecast</h1>
+          <p className="text-slate-500 font-medium">Plan your travel according to the current weather conditions.</p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 space-y-6">
-            <section className="rounded-2xl border border-indigo-100 bg-white/80 backdrop-blur-sm p-5 shadow-md hover:shadow-lg transition-shadow">
-              <WeatherSearchBar onSearch={handleSearch} />
-              <WeatherCard {...weather} />
-              <ForecastSlider forecast={forecast} />
-              <AISuggestion suggestion={suggestion} />
-              <RefreshButton onClick={handleRefresh} />
-            </section>
+
+        {/* Search */}
+        <WeatherSearchBar onSearch={fetchWeather} />
+
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p className="text-slate-500 font-bold">Fetching latest weather...</p>
           </div>
-          <aside className="lg:col-span-1 space-y-4">
-            {/* Placeholder for future weather-related widgets */}
-            <div className="rounded-2xl border border-indigo-100 bg-white/80 backdrop-blur-sm p-4 shadow-md">
-              <h2 className="text-lg font-semibold mb-3">Weather Tools</h2>
-              <p className="text-sm text-gray-500">More features coming soon!</p>
-            </div>
-          </aside>
-        </div>
-        <div className="mt-6 grid grid-cols-2 gap-3">
+        ) : error ? (
+          <div className="bg-white rounded-3xl p-10 text-center border border-slate-100 shadow-sm">
+            <p className="text-4xl mb-4">⚠️</p>
+            <h3 className="text-xl font-black text-slate-900 mb-2">Something went wrong</h3>
+            <p className="text-slate-500 mb-6">{error}</p>
+            <button
+              onClick={() => fetchWeather('Islamabad')}
+              className="px-6 py-2 bg-slate-900 text-black rounded-xl font-bold hover:bg-indigo-600 transition-all"
+            >
+              Try Islamabad
+            </button>
+          </div>
+        ) : weatherData && (
+          <div className="animate-in fade-in duration-500">
+            {/* Main Weather */}
+            <WeatherCard
+              city={weatherData.city}
+              temp={weatherData.temp}
+              condition={weatherData.condition}
+              icon={weatherData.icon}
+              humidity={weatherData.humidity}
+              wind={weatherData.wind}
+              feelsLike={weatherData.feelsLike}
+            />
+
+            {/* AI Insight */}
+            <AISuggestion suggestion={weatherData.suggestion} />
+
+            {/* Weekly Forecast */}
+            <ForecastSlider forecast={weatherData.forecast} />
+          </div>
+        )}
+
+        {/* Navigation Buttons */}
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 border-t border-slate-200 pt-10">
           <button
-            className="w-full inline-flex items-center justify-center rounded-lg bg-gray-100 px-4 py-3 text-black font-semibold shadow-sm hover:shadow-md hover:bg-gray-200"
+            className="flex-1 bg-white border-2 border-slate-200 text-black px-8 py-4 rounded-2xl font-black shadow-sm hover:bg-slate-50 transition-all active:scale-95 flex items-center justify-center gap-2"
             onClick={() => navigate('/trip-overview')}
           >
-            Back
+            <span>←</span> Back to Overview
           </button>
           <button
-            className="w-full inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-3 text-black font-semibold shadow-sm hover:shadow-md hover:bg-indigo-700"
-            onClick={() => navigate('/expense-tracker')}
+            className="flex-1 bg-white border-2 border-slate-900 text-black px-8 py-4 rounded-2xl font-black shadow-lg hover:bg-slate-50 transition-all active:scale-95 flex items-center justify-center gap-2"
+            onClick={() => navigate('/explore-pakistan')}
           >
-            Next
+            Explore Pakistan <span>→</span>
           </button>
         </div>
       </div>

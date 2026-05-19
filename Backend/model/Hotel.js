@@ -12,7 +12,7 @@ const Hotel = sequelize.define('Hotel', {
         allowNull: false,
     },
     image: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
     images: {
         type: DataTypes.JSON, // Array of image URLs
@@ -38,7 +38,7 @@ const Hotel = sequelize.define('Hotel', {
         defaultValue: 4,
     },
     bookingUrl: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
 }, {
     timestamps: true,

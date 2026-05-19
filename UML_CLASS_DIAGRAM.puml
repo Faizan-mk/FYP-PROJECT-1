@@ -1,0 +1,554 @@
+@startuml AI_Travel_Assistant_Full_Class_Diagram
+' Full UML Class Diagram — AI Travel Assistant (banking-style layout)
+title AI Travel Assistant — Full UML Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam monochrome false
+skinparam class {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+}
+
+hide circle
+skinparam linetype ortho
+
+' ═══════════════════════════════════════════════════════════════════════════
+' CENTRAL SYSTEM (like Bank)
+' ═══════════════════════════════════════════════════════════════════════════
+class TravelSystem {
+  +SystemId: int
+  +Name: string
+  +Port: int
+  +ApiVersion: string
+  --
+  +startServer()
+  +syncDatabase()
+  +loadRoutes()
+  +seedDestinations()
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' CONTROLLERS / SERVICES (like Teller)
+' ═══════════════════════════════════════════════════════════════════════════
+class AuthController {
+  +ControllerId: int
+  --
+  +register()
+  +login()
+  +googleAuth()
+  +getMe()
+  +forgotPassword()
+  +verifyResetOtp()
+  +resetPassword()
+}
+
+class ChatController {
+  +ControllerId: int
+  --
+  +sendMessage()
+  +getChatHistory()
+  -getLiveDestinationHint()
+}
+
+class TripController {
+  +ControllerId: int
+  --
+  +createTrip()
+  +getAllTrips()
+  +getTripById()
+  +updateTrip()
+  +deleteTrip()
+}
+
+class FlightBookingController {
+  +ControllerId: int
+  --
+  +createFlightBooking()
+  +getUserBookings()
+  +getBookingById()
+  +cancelBooking()
+  +deleteBooking()
+}
+
+class TransportBookingController {
+  +ControllerId: int
+  --
+  +createBooking()
+  +getUserBookings()
+  +cancelBooking()
+  +deleteBooking()
+}
+
+class DestinationController {
+  +ControllerId: int
+  --
+  +getAllDestinations()
+  +getPopularDestinations()
+  +getDestinationById()
+  +createDestination()
+  +updateDestination()
+  +deleteDestination()
+}
+
+class ExpenseController {
+  +ControllerId: int
+  --
+  +createExpense()
+  +getExpenses()
+  +deleteExpense()
+  +getExpenseStats()
+}
+
+class EstimationController {
+  +ControllerId: int
+  --
+  +saveEstimation()
+  +getEstimations()
+  +deleteEstimation()
+}
+
+class PakFlightsController {
+  +ControllerId: int
+  --
+  +getAllAirlines()
+  +searchFlights()
+  +redirectFlight()
+}
+
+class PakTransportController {
+  +ControllerId: int
+  --
+  +getCompanies()
+  +searchRoutes()
+  +getAllRoutes()
+  +redirectToCompany()
+}
+
+class TravelPackageController {
+  +ControllerId: int
+  --
+  +listPackages()
+  +redirectToAgency()
+}
+
+class SafetyController {
+  +ControllerId: int
+  --
+  +getSafetyData()
+  +addSafetyData()
+}
+
+class ContactController {
+  +ControllerId: int
+  --
+  +submitContact()
+}
+
+class UserController {
+  +ControllerId: int
+  --
+  +updateProfile()
+  +updatePassword()
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' USER (like Customer)
+' ═══════════════════════════════════════════════════════════════════════════
+class User {
+  +Id: UUID
+  +Name: string
+  +Email: string
+  +Password: string
+  +GoogleId: string
+  +Phone: string
+  +Role: string
+  +ProfilePicture: string
+  --
+  +planTrip()
+  +sendChatMessage()
+  +bookFlight()
+  +bookTransport()
+  +trackExpense()
+  +viewDestinations()
+  +saveBudgetEstimate()
+  +updateProfile()
+  +viewNotifications()
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' USER-OWNED ENTITIES
+' ═══════════════════════════════════════════════════════════════════════════
+class Trip {
+  +Id: UUID
+  +Destination: string
+  +StartDate: Date
+  +EndDate: Date
+  +Budget: int
+  +Travelers: int
+  +TripType: string
+  +Status: enum
+}
+
+class Chat {
+  +Id: UUID
+  +UserId: UUID
+  +Message: text
+  +Response: text
+}
+
+class Notification {
+  +Id: UUID
+  +UserId: UUID
+  +Type: enum
+  +Title: string
+  +Message: text
+  +IsRead: boolean
+}
+
+class Expense {
+  +Id: UUID
+  +Title: string
+  +Amount: float
+  +Category: string
+  +Type: enum
+  +Date: date
+  +UserId: UUID
+}
+
+class Estimation {
+  +Id: UUID
+  +Destination: string
+  +Duration: int
+  +Travelers: int
+  +TotalEstimate: float
+  +Breakdown: JSON
+  +UserId: UUID
+}
+
+class FlightBooking {
+  +Id: UUID
+  +UserId: UUID
+  +FlightId: string
+  +Airline: string
+  +From: string
+  +To: string
+  +Price: float
+  +BookingReference: string
+  +Status: enum
+  +PassengerName: string
+}
+
+class TransportBooking {
+  +Id: UUID
+  +UserId: UUID
+  +Provider: string
+  +Type: string
+  +From: string
+  +To: string
+  +Price: decimal
+  +BookingReference: string
+  +Status: string
+}
+
+class ContactMessage {
+  +Id: UUID
+  +UserId: UUID
+  +Name: string
+  +Email: string
+  +Subject: string
+  +Message: text
+  +Status: enum
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' CATALOG / REFERENCE DATA
+' ═══════════════════════════════════════════════════════════════════════════
+class Destination {
+  +Id: UUID
+  +Name: string
+  +Type: string
+  +Weather: string
+  +Image: text
+}
+
+class Flight {
+  +Id: UUID
+  +Airline: string
+  +Price: int
+  +From: string
+  +To: string
+  +Departure: string
+  +Arrival: string
+  +BookingUrl: text
+}
+
+class Hotel {
+  +Id: UUID
+  +Name: string
+  +Price: int
+  +Rating: float
+  +Stars: int
+  +Images: JSON
+  +BookingUrl: text
+}
+
+class Transport {
+  +Id: UUID
+  +Type: enum
+  +Provider: string
+  +Price: int
+  +From: string
+  +To: string
+}
+
+class Safety {
+  +Id: UUID
+  +Destination: string
+  +Police: string
+  +Ambulance: string
+  +Fire: string
+  +Tips: JSON
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' PAKISTAN AIRLINES MODULE
+' ═══════════════════════════════════════════════════════════════════════════
+class PakAirline {
+  +Id: int
+  +Name: string
+  +Code: string
+  +Logo: string
+  +Website: string
+}
+
+class PakFlight {
+  +Id: int
+  +AirlineId: int
+  +FromAirport: string
+  +ToAirport: string
+  +DepartureTime: string
+  +ArrivalTime: string
+  +Price: int
+  +RealRedirectUrl: string
+}
+
+class FlightClick {
+  +Id: int
+  +FlightId: int
+  +IpAddress: string
+  +UserAgent: text
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' PAKISTAN TRANSPORT MODULE
+' ═══════════════════════════════════════════════════════════════════════════
+class TransportCompany {
+  +Id: int
+  +Name: string
+  +Code: string
+  +Type: string
+  +Website: text
+  +IsActive: boolean
+}
+
+class TransportRoute {
+  +Id: int
+  +CompanyId: int
+  +FromCity: string
+  +ToCity: string
+  +DepartureTime: string
+  +Price: int
+  +RealRedirectUrl: text
+}
+
+class TransportClick {
+  +Id: int
+  +RouteId: int
+  +IpAddress: string
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' TRAVEL PACKAGES MODULE
+' ═══════════════════════════════════════════════════════════════════════════
+class TravelAgency {
+  +Id: UUID
+  +Code: string
+  +Name: string
+  +WebsiteUrl: string
+  +IsActive: boolean
+}
+
+class TravelPackage {
+  +Id: UUID
+  +AgencyId: UUID
+  +DestinationName: string
+  +Title: string
+  +DurationDays: int
+  +BasePricePkr: int
+  +PackageType: enum
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' AI CHATBOT (Python Flask)
+' ═══════════════════════════════════════════════════════════════════════════
+class FlaskApp {
+  +Port: int
+  --
+  +chat()
+  +health()
+  +stats()
+}
+
+class ChatbotEngine {
+  --
+  +chatbotResponse()
+  -predictClass()
+  -getNeuralResponse()
+  -bagOfWords()
+}
+
+class KnowledgeEngine {
+  --
+  +getBestAnswer()
+  +getStats()
+  -rankResult()
+}
+
+class LLMEngine {
+  --
+  +generateChatReply()
+  +isLlmAvailable()
+  +getActiveProvider()
+}
+
+class ItineraryGenerator {
+  --
+  +handleItineraryChat()
+  +buildDayPlan()
+}
+
+class TravelKnowledge {
+  +PakistanCities: list
+  +InternationalCities: list
+  +DestinationGuides: dict
+}
+
+class NeuralModel {
+  +ModelFile: h5
+  +IntentsFile: json
+  +WordsFile: pkl
+  +ClassesFile: pkl
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' FRONTEND
+' ═══════════════════════════════════════════════════════════════════════════
+class ReactApp {
+  +AppId: int
+  +Name: string
+  --
+  +render()
+  +navigate()
+}
+
+class ApiService {
+  +BaseUrl: string
+  +AuthToken: string
+  --
+  +get()
+  +post()
+  +put()
+  +delete()
+  +setAuthToken()
+}
+
+' ═══════════════════════════════════════════════════════════════════════════
+' RELATIONSHIPS — TRAVEL SYSTEM (like Bank → Teller, Customer)
+' ═══════════════════════════════════════════════════════════════════════════
+TravelSystem "1" -- "1..*" User : registers
+TravelSystem "1" -- "1" AuthController : uses
+TravelSystem "1" -- "1" ChatController : uses
+TravelSystem "1" -- "1" TripController : uses
+TravelSystem "1" -- "1" FlightBookingController : uses
+TravelSystem "1" -- "1" TransportBookingController : uses
+TravelSystem "1" -- "1" DestinationController : uses
+TravelSystem "1" -- "1" ExpenseController : uses
+TravelSystem "1" -- "1" EstimationController : uses
+TravelSystem "1" -- "1" PakFlightsController : uses
+TravelSystem "1" -- "1" PakTransportController : uses
+TravelSystem "1" -- "1" TravelPackageController : uses
+TravelSystem "1" -- "1" SafetyController : uses
+TravelSystem "1" -- "1" ContactController : uses
+TravelSystem "1" -- "1" UserController : uses
+
+AuthController "1" -- "1..*" User : authenticates
+ChatController "1" -- "1..*" User : serves
+TripController "1" -- "1..*" User : manages
+FlightBookingController "1" -- "1..*" User : processes
+TransportBookingController "1" -- "1..*" User : processes
+ExpenseController "1" -- "1..*" User : manages
+EstimationController "1" -- "1..*" User : manages
+UserController "1" -- "1..*" User : updates
+
+' ═══════════════════════════════════════════════════════════════════════════
+' USER COMPOSITION (like Customer → Account, Loan)
+' ═══════════════════════════════════════════════════════════════════════════
+User "1" -- "0..*" Trip : plans
+User "1" -- "0..*" Chat : has
+User "1" -- "0..*" Notification : receives
+User "1" -- "0..*" Expense : tracks
+User "1" -- "0..*" Estimation : saves
+User "1" -- "0..*" FlightBooking : books
+User "1" -- "0..*" TransportBooking : books
+User "1" -- "0..*" ContactMessage : sends
+
+' ═══════════════════════════════════════════════════════════════════════════
+' CONTROLLER → ENTITY (manages)
+' ═══════════════════════════════════════════════════════════════════════════
+ChatController ..> Chat : persists
+ChatController ..> Destination : enriches
+ChatController ..> FlaskApp : HTTP POST
+TripController ..> Trip : CRUD
+FlightBookingController ..> FlightBooking : CRUD
+TransportBookingController ..> TransportBooking : CRUD
+ExpenseController ..> Expense : CRUD
+EstimationController ..> Estimation : CRUD
+DestinationController ..> Destination : CRUD
+SafetyController ..> Safety : CRUD
+ContactController ..> ContactMessage : creates
+PakFlightsController ..> PakFlight : queries
+PakFlightsController ..> PakAirline : queries
+PakTransportController ..> TransportRoute : queries
+PakTransportController ..> TransportCompany : queries
+TravelPackageController ..> TravelPackage : lists
+
+' ═══════════════════════════════════════════════════════════════════════════
+' PAKISTAN MODULE ASSOCIATIONS
+' ═══════════════════════════════════════════════════════════════════════════
+PakAirline "1" -- "1..*" PakFlight : operates
+PakFlight "1" -- "0..*" FlightClick : tracks
+TransportCompany "1" -- "1..*" TransportRoute : offers
+TransportRoute "1" -- "0..*" TransportClick : tracks
+TravelAgency "1" -- "1..*" TravelPackage : publishes
+
+' ═══════════════════════════════════════════════════════════════════════════
+' AI CHATBOT INTERNAL
+' ═══════════════════════════════════════════════════════════════════════════
+FlaskApp "1" -- "1" ChatbotEngine : delegates
+ChatbotEngine "1" -- "1" KnowledgeEngine : uses
+ChatbotEngine "1" -- "0..1" LLMEngine : uses
+ChatbotEngine "1" -- "1" ItineraryGenerator : uses
+ChatbotEngine "1" -- "1" NeuralModel : uses
+KnowledgeEngine "1" -- "1" TravelKnowledge : reads
+ItineraryGenerator "1" -- "1" TravelKnowledge : reads
+
+' ═══════════════════════════════════════════════════════════════════════════
+' FRONTEND
+' ═══════════════════════════════════════════════════════════════════════════
+ReactApp "1" -- "1" ApiService : uses
+ApiService ..> TravelSystem : REST API
+ApiService ..> FlaskApp : chat API
+
+@enduml

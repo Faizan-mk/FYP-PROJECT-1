@@ -2,14 +2,24 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="w-full text-center py-4 text-xs text-gray-500 bg-white border-t border-gray-200 mt-8">
-    <div>AI Trip Planner &copy; {new Date().getFullYear()} &mdash; v1.0.0</div>
-    <div className="mt-1">
-      <a href="#legal" className="hover:underline">Legal</a>
-      <span className="mx-2">|</span>
-      <a href="#privacy" className="hover:underline">Privacy Policy</a>
+  <footer className="w-full text-center py-8 text-gray-400 bg-white border-t border-gray-100 mt-auto">
+    <div className="max-w-7xl mx-auto px-4">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="text-sm">
+          <span className="font-bold text-blue-600">AI Trip Planner</span> &copy; {new Date().getFullYear()}
+        </div>
+        <div className="flex gap-6 text-sm">
+          <a href="#legal" className="hover:text-blue-600 transition-colors">Legal</a>
+          <a href="#privacy" className="hover:text-blue-600 transition-colors">Privacy Policy</a>
+          <a href="#terms" className="hover:text-blue-600 transition-colors">Terms of Service</a>
+        </div>
+        <div className="text-xs text-gray-300">
+          v1.2.0 &mdash; Handcrafted with ❤️
+        </div>
+      </div>
     </div>
   </footer>
 );
 
 export default Footer;
+

@@ -16,7 +16,7 @@ const Transport = sequelize.define('Transport', {
         allowNull: false,
     },
     image: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
     price: {
         type: DataTypes.INTEGER,
@@ -38,7 +38,7 @@ const Transport = sequelize.define('Transport', {
         allowNull: false,
     },
     bookingUrl: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
 }, {
     timestamps: true,

@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const defaultNumbers = [
-  { key: "police", label: "Police", number: "15", emoji: "👮" },
-  { key: "ambulance", label: "Ambulance", number: "115", emoji: "🚑" },
-  { key: "fire", label: "Fire", number: "16", emoji: "🚒" },
-];
+export default function EmergencyNumbers({ safetyData }) {
+  const [numbers, setNumbers] = useState([
+    { key: "police", label: "Police", number: "15", emoji: "👮" },
+    { key: "ambulance", label: "Ambulance", number: "1122", emoji: "🚑" },
+    { key: "fire", label: "Fire", number: "16", emoji: "🚒" },
+  ]);
 
-export default function EmergencyNumbers() {
-  const [numbers, setNumbers] = useState(defaultNumbers);
+  useEffect(() => {
+    setNumbers([
+      { key: "police", label: "Police", number: safetyData?.police || "15", emoji: "👮" },
+      { key: "ambulance", label: "Ambulance", number: safetyData?.ambulance || "1122", emoji: "🚑" },
+      { key: "fire", label: "Fire", number: safetyData?.fire || "16", emoji: "🚒" },
+    ]);
+  }, [safetyData]);
 
   const dial = (num) => {
     try {

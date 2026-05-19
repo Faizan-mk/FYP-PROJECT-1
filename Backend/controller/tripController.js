@@ -1,4 +1,5 @@
 const Trip = require('../model/Trip');
+const { createNotification } = require('./notificationController');
 
 exports.createTrip = async (req, res) => {
     try {
@@ -12,12 +13,23 @@ exports.createTrip = async (req, res) => {
             tripType,
             UserId: req.user.id,
         });
+
+        // Trigger notification
+        await createNotification(
+            req.user.id,
+            'Trip',
+            '🌍',
+            'Trip Created!',
+            `Your trip to ${destination} has been successfully planned.`
+        );
+
         res.status(201).json(trip);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
 };
+
 
 exports.getAllTrips = async (req, res) => {
     try {

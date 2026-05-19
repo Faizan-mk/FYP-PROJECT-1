@@ -1,67 +1,57 @@
-const HowItWorks = () => {
-  const steps = [
-    {
-      number: "1️⃣",
-      title: "Enter Destination",
-      description: "Tell us where you want to go and when"
-    },
-    {
-      number: "2️⃣",
-      title: "AI Creates Plan",
-      description: "Our AI analyzes and creates your perfect itinerary"
-    },
-    {
-      number: "3️⃣",
-      title: "Adjust Budget",
-      description: "Fine-tune your budget and preferences"
-    },
-    {
-      number: "4️⃣",
-      title: "Download or Share",
-      description: "Get your plan and share with travel companions"
-    }
-  ];
+const STEPS = [
+  {
+    number: '01',
+    title: 'Create your account',
+    description: 'Sign up as a traveler to access flights, hotels, transport, and trip tools.',
+  },
+  {
+    number: '02',
+    title: 'Pick destination & dates',
+    description: 'Choose where in Pakistan you want to go and set your travel window.',
+  },
+  {
+    number: '03',
+    title: 'Book & estimate in PKR',
+    description: 'Compare flights, hotels, and coaches. Use the cost estimator and budget planner.',
+  },
+  {
+    number: '04',
+    title: 'Travel with confidence',
+    description: 'Track your trip, check weather, chat with AI, and use safety alerts on the road.',
+  },
+];
 
+const HowItWorks = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            How It Works
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Get your personalized travel plan in just 4 simple steps
+          <p className="text-indigo-600 text-sm font-semibold uppercase tracking-widest mb-2">
+            Simple workflow
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">How it works</h2>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Go from idea to booked trip in four steps — the same flow as your dashboard and Plan My
+            Trip module.
           </p>
         </div>
 
         <div className="relative">
-          {/* Timeline line for desktop */}
-          <div className="hidden lg:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-blue-400 to-blue-200"></div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => (
-              <div key={index} className="relative">
-                {/* Step number and icon */}
-                <div className="flex flex-col items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-2xl mb-4 shadow-lg ring-2 ring-white/40">
-                    {step.number}
-                  </div>
-                  
-                  {/* Connecting line for mobile */}
-                  {index < steps.length - 1 && (
-                    <div className="lg:hidden w-0.5 h-8 bg-gradient-to-b from-blue-400 to-blue-200"></div>
-                  )}
-                </div>
+          <div className="hidden lg:block absolute top-10 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-blue-200 via-indigo-400 to-blue-200" />
 
-                {/* Step content */}
-                <div className="text-center">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {step.description}
-                  </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {STEPS.map((step, index) => (
+              <div key={step.number} className="relative text-center">
+                <div className="mx-auto w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white text-xl font-black mb-6 shadow-lg shadow-blue-500/25 rotate-3 group-hover:rotate-0 transition-transform">
+                  {step.number}
                 </div>
+                {index < STEPS.length - 1 && (
+                  <div className="lg:hidden mx-auto w-0.5 h-8 bg-gradient-to-b from-indigo-300 to-transparent my-2" />
+                )}
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{step.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed max-w-xs mx-auto">
+                  {step.description}
+                </p>
               </div>
             ))}
           </div>

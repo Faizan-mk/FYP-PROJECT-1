@@ -1,11 +1,45 @@
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import AuthLayout from './components/AuthLayout'
 import SocialButtons from './components/SocialButtons'
 import LoginForm from './components/LoginForm'
+import ForgotPasswordForm from './components/ForgotPasswordForm'
 
 export default function LoginPage() {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const isForgotView = searchParams.get('view') === 'forgot'
   const [selectedPortal, setSelectedPortal] = useState(null)
+
+  useEffect(() => {
+    if (isForgotView) {
+      setSelectedPortal('traveler')
+    }
+  }, [isForgotView])
+
+  const openForgotPassword = () => {
+    navigate('/login?view=forgot', { replace: true })
+  }
+
+  const backToLogin = () => {
+    navigate('/login', { replace: true })
+    setSelectedPortal('traveler')
+  }
+
+  if (isForgotView) {
+    return (
+      <AuthLayout title="Forgot password?" subtitle="Verify your email, then set a new password">
+        <button
+          type="button"
+          onClick={backToLogin}
+          className="mb-4 text-sm text-gray-600 hover:text-gray-900 flex items-center gap-1"
+        >
+          ← Back to login
+        </button>
+        <ForgotPasswordForm />
+      </AuthLayout>
+    )
+  }
 
   if (!selectedPortal) {
     return (
@@ -40,7 +74,7 @@ export default function LoginPage() {
         ← Back to portal selection
       </button>
 
-      <LoginForm isAdmin={selectedPortal === 'admin'} />
+      <LoginForm isAdmin={selectedPortal === 'admin'} onForgotPassword={openForgotPassword} />
 
       {selectedPortal === 'traveler' && (
         <>
@@ -61,3 +95,4 @@ export default function LoginPage() {
     </AuthLayout>
   )
 }
+

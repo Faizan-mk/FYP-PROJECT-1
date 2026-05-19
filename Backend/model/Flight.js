@@ -44,7 +44,7 @@ const Flight = sequelize.define('Flight', {
         allowNull: false,
     },
     bookingUrl: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
 }, {
     timestamps: true,

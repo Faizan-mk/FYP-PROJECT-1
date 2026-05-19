@@ -21,7 +21,36 @@ const User = sequelize.define('User', {
     },
     password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
+    },
+    googleId: {
+        type: DataTypes.STRING(255),
+        allowNull: true,
+        unique: true,
+    },
+    bio: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+    },
+    phone: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    profilePicture: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    role: {
+        type: DataTypes.STRING,
+        defaultValue: 'traveler',
+    },
+    resetPasswordToken: {
+        type: DataTypes.STRING(255),
+        allowNull: true,
+    },
+    resetPasswordExpire: {
+        type: DataTypes.DATE,
+        allowNull: true,
     },
 }, {
     timestamps: true,

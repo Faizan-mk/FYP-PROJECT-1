@@ -170,7 +170,7 @@ function TransportationPlannerPage() {
         </button>
         <button
           className="w-full inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-3 text-black font-semibold shadow-sm hover:shadow-md hover:bg-indigo-700"
-          onClick={() => navigate('/cost-estimator')}
+          onClick={() => navigate('/plan-my-trip')}
         >
           Next
         </button>

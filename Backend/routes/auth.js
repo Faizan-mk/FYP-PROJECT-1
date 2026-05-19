@@ -5,6 +5,12 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
+router.post('/google', authController.googleAuth);
+router.post('/dev-google', authController.devGoogleLogin);
+router.post('/forgot-password', authController.forgotPassword);
+router.post('/verify-reset-otp', authController.verifyResetOtp);
+router.get('/reset-password/:token', authController.validateResetToken);
+router.post('/reset-password', authController.resetPassword);
 router.get('/me', authMiddleware, authController.getMe);
 
 module.exports = router;
